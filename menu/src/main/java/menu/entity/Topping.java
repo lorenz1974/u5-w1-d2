@@ -24,13 +24,4 @@ public class Topping implements PriceAndCalories {
         this.calories = calories * XL_MULTIPLIER;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Name\tPrice\tCalories\n");
-        sb.append(name).append("\t");
-        sb.append(String.format("%.2f", price)).append("\t");
-        sb.append(String.format("%.2f", calories)).append("\n");
-        return sb.toString();
-    }
 }

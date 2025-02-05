@@ -39,19 +39,4 @@ public class Pizza implements PriceAndCalories {
         this.price = (toppings.stream().mapToDouble(Topping::getPrice).sum() + basePrice) * XL_MULTIPLIER;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("\nName\t\tPrice\tCalories\tToppings list\n");
-        sb.append("-".repeat(80)).append("\n");
-        sb.append(name).append("\t")
-                .append(String.format("%.2f", price)).append("\t")
-                .append(String.format("%.2f", calories)).append("\t\t");
-        toppings.forEach(topping -> sb.append(topping.getName()).append(", "));
-        if (!toppings.isEmpty()) {
-            sb.setLength(sb.length() - 2); // Remove the last comma and space
-        }
-        sb.append("\n");
-        return sb.toString();
-    }
 }
