@@ -1,23 +1,23 @@
 package menu.config;
 
 import menu.entity.Pizza;
-import menu.entity.Topping;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import lombok.RequiredArgsConstructor;
 
 import java.util.Arrays;
 import java.util.List;
 
 @Configuration
+@RequiredArgsConstructor
 public class PizzaConfig {
 
-    @Autowired
-    private ToppingConfig toppings;
+    private final ToppingConfig toppings;
 
     @Bean
-    public Pizza pizzaMargerita() {
+    public Pizza pizzaMargherita() {
         return new Pizza(
                 "Margherita",
                 Arrays.asList(toppings.tomato(), toppings.mozzarella(), toppings.basil()));
@@ -37,7 +37,7 @@ public class PizzaConfig {
     }
 
     @Bean
-    public Pizza pizzaMargeritaXL() {
+    public Pizza pizzaMargheritaXL() {
         return new Pizza(
                 "Margherita XL",
                 Arrays.asList(toppings.tomato(), toppings.mozzarella(), toppings.basil()),
@@ -62,11 +62,11 @@ public class PizzaConfig {
 
     @Bean
     public List<Pizza> getAllPizzas() {
-        return Arrays.asList(pizzaMargerita(), pizzaPepperoni(), pizzaVegetarian());
+        return Arrays.asList(pizzaMargherita(), pizzaPepperoni(), pizzaVegetarian());
     }
 
     @Bean
     public List<Pizza> getAllXLPizzas() {
-        return Arrays.asList(this.pizzaMargeritaXL(), this.pizzaPepperoniXL(), this.pizzaVegetarianXL());
+        return Arrays.asList(this.pizzaMargheritaXL(), this.pizzaPepperoniXL(), this.pizzaVegetarianXL());
     }
 }
